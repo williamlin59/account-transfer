@@ -1,0 +1,22 @@
+server:
+  port: 8081
+
+async:
+  corePoolSize: 20
+  maxPoolSize: 30
+  queueCapacity: 20
+spring:
+  h2:
+    console:
+      enabled: true
+  jpa:
+    database-platform: org.hibernate.dialect.H2Dialect
+  liquibase:
+    change-log: classpath:/liquibase/changelog.yaml
+  logging:
+    level: INFO
+default-account-amount: 5000.00
+
+job:
+  poolSize: 10
+  cron: 0 0/1 * 1/1 * ?

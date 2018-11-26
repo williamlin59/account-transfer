@@ -1,0 +1,45 @@
+buildscript {
+	ext {
+		springBootVersion = '2.1.0.RELEASE'
+	}
+	repositories {
+        jcenter()
+		mavenCentral()
+	}
+	dependencies {
+		classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
+	}
+}
+
+apply plugin: 'java'
+apply plugin: 'eclipse'
+apply plugin: 'org.springframework.boot'
+apply plugin: 'io.spring.dependency-management'
+
+group = 'com.demo'
+version = '0.0.1-SNAPSHOT'
+sourceCompatibility = 1.8
+
+repositories {
+	mavenCentral()
+}
+
+configurations {
+    compile.exclude module: 'spring-boot-starter-tomcat'
+    compile.exclude group: 'org.apache.tomcat'
+}
+dependencies {
+	implementation('org.springframework.boot:spring-boot-starter-data-jpa')
+	implementation('org.springframework.boot:spring-boot-starter-web')
+	implementation('org.springframework.boot:spring-boot-starter-jetty')
+    implementation('org.springframework.boot:spring-boot-starter')
+	implementation('org.liquibase:liquibase-core')
+	implementation('org.projectlombok:lombok:1.18.4')
+	implementation('com.google.guava:guava:27.0-jre')
+	implementation('com.hazelcast:hazelcast:+')
+	testImplementation('org.springframework.boot:spring-boot-starter-test')
+	implementation('javax.xml.bind:jaxb-api:2.4.0-b180725.0427')
+	implementation('javax.inject:javax.inject:1')
+	implementation('com.zaxxer:HikariCP:+')
+	implementation('com.h2database:h2:1.4.197')
+}

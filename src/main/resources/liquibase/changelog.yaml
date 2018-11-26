@@ -1,0 +1,70 @@
+databaseChangeLog:
+- changeSet:
+    id: 1
+    author: WilliamLin
+    changes:
+    - createTable:
+        tableName: account
+        columns:
+        - column:
+            name: account_id
+            type: bigint
+            constraints:
+              primaryKey: true
+              nullable: false
+        - column:
+            name: create_time
+            type: timestamp
+            defaultValueComputed: "CURRENT_TIMESTAMP"
+            constraints:
+              nullable: false
+        - column:
+            name: amount
+            type: number
+            constraints:
+              nullable: false
+    rollBack:
+    - dropTable:
+        cascadeConstraints: true
+        tableName: account
+- changeSet:
+    id: 3
+    author: WilliamLin
+    changes:
+    - createTable:
+        tableName: transaction_error
+        columns:
+        - column:
+            name: transaction_error_id
+            type: bigint
+            constraints:
+              primaryKey: true
+              nullable: false
+        - column:
+            name: source_account_id
+            type: bigint
+
+        - column:
+            name: target_account_id
+            type: bigint
+
+        - column:
+            name: transaction_time
+            type: timestamp
+
+        - column:
+            name: amount
+            type: number
+
+    rollBack:
+    - dropTable:
+        cascadeConstraints: true
+        tableName: transaction_error
+- changeSet:
+    id: 4
+    author: WilliamLin
+    changes:
+    - sql: CREATE SEQUENCE "SEQ_TRANSACTION_ERROR" MINVALUE 1 MAXVALUE 9999999999999999 INCREMENT BY 1 START WITH 1
+    rollBack:
+    - dropSequence:
+        sequenceName: SEQ_TRANSACTION_ERROR
