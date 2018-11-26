@@ -36,7 +36,6 @@ dependencies {
 	implementation('org.liquibase:liquibase-core')
 	implementation('org.projectlombok:lombok:1.18.4')
 	implementation('com.google.guava:guava:27.0-jre')
-	implementation('com.hazelcast:hazelcast:+')
 	testImplementation('org.springframework.boot:spring-boot-starter-test')
 	implementation('javax.xml.bind:jaxb-api:2.4.0-b180725.0427')
 	implementation('javax.inject:javax.inject:1')
